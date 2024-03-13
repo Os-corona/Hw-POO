@@ -48,7 +48,8 @@ while flag1:
             print("  Que desea realizar: ")
             print("\t1. Ver sus libros rentados")
             print("\t2. Rentar un libro")
-            print("\t3. Cerrar sesion")
+            print("\t3. Devolver Libro")
+            print("\t4. Cerrar sesion")
             print("============================")
             opt2 = int(input())
             if opt2 == 1:
@@ -59,7 +60,9 @@ while flag1:
             elif opt2 == 2:
                 libreria.users[logIn-1].rentBook(libreria.books)
             elif opt2 == 3:
-                flag = False
+                libreria.users[logIn-1].returnBook(libreria.books)
+            elif opt2 == 4:
+                flag = False    
             else:
                 print("Ingrese una opcion listada")
     elif opt == 4:

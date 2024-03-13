@@ -32,9 +32,13 @@ class library:
 
     def printRentedBooks(self):
         i = 1
-        if not self.books:
-            print("No hay libros registrados\n")
-            return
+        c = 0
+        for book in self.books:
+            if book.isRented:
+                c += 1
+        if c == 0:
+            print("No hay libros rentados")
+            return        
         print("\t=====LISTA DE LIBROS RENTADOS======")
         for book in self.books:
             if book.isRented:
@@ -44,8 +48,12 @@ class library:
 
     def printUsersWithBooks(self):
         i = 1
-        if not self.users:
-            print("No hay usuarios registrados\n")
+        c = 0
+        for user in self.users:
+            if user.hasRented:
+                c += 1
+        if c == 0:
+            print("No hay usuarios con libros rentados")
             return
         print("\t=====LISTA DE USUARIOS QUE HAN RENTADO======")
         for user in self.users:
