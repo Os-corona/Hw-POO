@@ -29,7 +29,6 @@ public class User {
         this.booksRented.add(library.get(index-1));
         this.hasRented = true;
         System.out.println(name+" ha rentado: "+library.get(index-1).getName()+" correctamente");
-        sc.close();
     }
 
     public void returnBook(Library library){
@@ -46,6 +45,10 @@ public class User {
         int id = sc.nextInt();
         library.getBooks().get(id-1).setRented(false);
         library.getBooks().get(id-1).setUser("");
+        this.booksRented.remove(id-1);
+        if (this.booksRented.isEmpty()) {
+            this.hasRented = false;
+        }
         System.out.println("Ha devuelto el libro: "+library.getBooks().get(id-1).getName());
     }
 

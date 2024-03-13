@@ -45,8 +45,14 @@ public class Library {
 
     public void printRentedBooks(){
         int i = 1;
-        if (books.isEmpty()){
-            System.out.println("No hay libros registrados\n");
+        int c = 0;
+        for (Book libros: this.books){
+            if (libros.isRented()) {
+                c++;
+            }
+        }
+        if (c == 0) {
+            System.out.println("No hay libros rentados\n");
             return;
         }
         System.out.println("\t=====LISTA DE LIBROS RENTADOS======");
@@ -60,8 +66,14 @@ public class Library {
     }
     public void printUsersWithBooks(){
         int i = 1;
-        if (users.isEmpty()){
-            System.out.println("No hay usuarios registrados\n");
+        int c = 0;
+        for (User usuarios: this.users){
+            if (usuarios.isHasRented()) {
+                c++;
+            }
+        }
+        if (c == 0) {
+            System.out.println("No hay usuarios con libros\n");
             return;
         }
         System.out.println("\t=====LISTA DE USUARIOS QUE HAN RENTADO======");
