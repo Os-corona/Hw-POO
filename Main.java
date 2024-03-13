@@ -56,7 +56,8 @@ public class Main {
                         System.out.println("  Que desea realizar: ");
                         System.out.println("\t1. Ver sus libros rentados");
                         System.out.println("\t2. Rentar un libro");
-                        System.out.println("\t3. Cerrar sesion");
+                        System.out.println("\t3. Devolver libro");
+                        System.out.println("\t4. Cerrar sesion");
                         System.out.println("============================");
 
                         int opt2 = sc.nextInt();
@@ -75,6 +76,10 @@ public class Main {
                                 break;
 
                             case 3:
+                                libreria.getUsers().get(logIn-1).returnBook(libreria);
+                                break;
+
+                            case 4:
                                 flag = false;
                                 break;
 
