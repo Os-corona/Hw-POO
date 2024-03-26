@@ -8,6 +8,5 @@ public class Main {
 
         Sys sys = new Sys();
         sys.system(zoo);
-
     }
 }

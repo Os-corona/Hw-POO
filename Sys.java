@@ -48,46 +48,111 @@ public class Sys {
                 case 4:
                     modify(zoo);
                     break;
+                case 5:
+                    flag = false;
+                    break;
                 default:
-
+                    System.out.println("\nHa ingresado un numero incorrecto!!\n");
                     break;
             }
         }
     }
 
     private void register(Zoo zoo){
+        boolean flag = true;
+
         System.out.println("\n\tHA SELECCIONADO REGISTRAR\n");
-        System.out.println("\t== Que desea registrar: ==");
-        System.out.println("1. Nuevo Empleado");
-        System.out.println("2. Nuevo Animal");
-        System.out.println("3. Nuevo Cliente");
-        System.out.println("4. Registrar Visita");
-        System.out.println("5. Volver al menu");
+
+        while(flag) {
+            System.out.println("\t== Que desea registrar: ==");
+            System.out.println("1. Nuevo Empleado");
+            System.out.println("2. Nuevo Animal");
+            System.out.println("3. Nuevo Cliente");
+            System.out.println("4. Registrar Visita");
+            System.out.println("5. Volver al menu");
+
+            int opt = sc.nextInt();
+
+            switch (opt) {
+                case 1:
+                    zoo.registerEmployee();
+                    break;
+                case 2:
+                    zoo.registerAnimal();
+                    break;
+                case 3:
+                    zoo.registerClient();
+                    break;
+                case 4:
+                    zoo.registerVisit();
+                    break;
+                case 5:
+                    flag = false;
+                    break;
+                default:
+                    System.out.println("\nHa ingresado un numero no valido!!\n");
+                    break;
+            }
+        }
+    }
+
+    private void data(Zoo zoo){
+        boolean flag = true;
+
+        System.out.println("\n\tHA SELECCIONADO REVISAR LOS DATOS DEL ZOO\n");
+        while (flag){
+            System.out.println("\t== Que desea consultar: ==");
+            System.out.println("1. Empleados");
+            System.out.println("2. Visitantes");
+            System.out.println("3. Animales");
+            System.out.println("4. Visitas");
+            System.out.println("5. Asignacion de Empleados");
+            System.out.println("6. Volver al menu");
+
+            int opt = sc.nextInt();
+
+            switch (opt){
+                case 1:
+                    zoo.printEmployees();
+                    break;
+                case 2:
+                    zoo.printClients();
+                    break;
+                case 3:
+                    zoo.printAnimals();
+                    break;
+                case 4:
+                    zoo.printVisits();
+                    break;
+                case 5:
+                    zoo.printOrders();
+                    break;
+                case 6:
+                    flag = false;
+                    break;
+                default:
+                    System.out.println("\nHa ingresado un numero no valido!!\n");
+                    break;
+            }
+        }
+    }
+
+    private void directions(Zoo zoo){
+        System.out.println("\n\tHA SELECCIONADO DIRIGIR A LOS EMPLEADOS\n");
+        System.out.println("1. Crear Orden de mantenimiento");
+        System.out.println("2. Crear Orden de veterinaria");
+        System.out.println("3. Volver al menu");
 
         int opt = sc.nextInt();
 
         switch (opt){
             case 1:
-                zoo.registerEmployee();
+                zoo.orderMaintenance();
                 break;
             case 2:
-                zoo.registerAnimal();
-                break;
-            case 3:
-                zoo.registerClient();
-                break;
-            case 4:
-                zoo.registerVisit();
+                zoo.orderVeterinary();
                 break;
         }
-    }
-
-    private void data(Zoo zoo){
-
-    }
-
-    private void directions(Zoo zoo){
-
     }
 
     private void modify(Zoo zoo){

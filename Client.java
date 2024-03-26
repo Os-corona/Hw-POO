@@ -1,5 +1,7 @@
 import java.time.LocalDate;
 public class Client {
+    private static int cont = 1;
+    private String ID;
     private String name;
     private String lastName;
     private String birthday;
@@ -10,6 +12,7 @@ public class Client {
 
     public Client(String name, String lastName, String birthday, String curp, int age) {
         this.name = name;
+        this.ID = String.format("%03d", cont);
         this.lastName = lastName;
         this.birthday = birthday;
         this.curp = curp;
@@ -39,5 +42,9 @@ public class Client {
 
     public String getDayRegistration() {
         return dayRegistration;
+    }
+
+    public String getID() {
+        return ID;
     }
 }

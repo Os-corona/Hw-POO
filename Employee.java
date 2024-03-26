@@ -1,6 +1,8 @@
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 public class Employee {
+    private static int cont = 1;
+    private String ID;
     private String name;
     private String lastName;
     private String birthday;
@@ -17,6 +19,7 @@ public class Employee {
         this.name = name;
         this.lastName = lastName;
         this.birthday = birthday;
+        this.ID = String.format("%03d", cont);
         this.firstDayAsWorker = String.valueOf(LocalDate.now());
         this.rfc = rfc;
         this.curp = curp;
@@ -64,5 +67,9 @@ public class Employee {
 
     public String getRole() {
         return role;
+    }
+
+    public String getID() {
+        return ID;
     }
 }
