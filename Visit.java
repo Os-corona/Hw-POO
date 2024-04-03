@@ -19,6 +19,7 @@ public class Visit {
         this.dayOfVisit = LocalDate.now().toString();
         this.adults = adults;
         this.children = children;
+        cont++;
     }
 
     public void printVisitants(){

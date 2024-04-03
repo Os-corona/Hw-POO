@@ -21,4 +21,24 @@ public class Order {
         this.date = LocalDate.now().toString();
         this.process = process;
     }
+
+    public String getEmployee() {
+        return employee;
+    }
+
+    public String getAnimalID() {
+        return animalID;
+    }
+
+    public String getProcess() {
+        return process;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getObservations() {
+        return observations;
+    }
 }

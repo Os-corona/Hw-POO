@@ -9,7 +9,7 @@ public class Sys {
         System.out.println("===== BIENVENIDO AL SISTEMA DEL ZOOLOGICO =====\n");
         System.out.println("Ingrese la contraseña del sistema: ");
         pass = sc.nextLine();
-        do {
+        while (!pass.equals(password)) {
             c++;
             if (c == 5){
                 System.out.println("Ha ingresado demasiadas veces la contraseña incorrecta...");
@@ -18,7 +18,7 @@ public class Sys {
             System.out.println("\nCONTRASEÑA INCORRECTA INTENTE DE NUEVO\n");
             System.out.println("Ingrese la contraseña del sistema: ");
             pass = sc.nextLine();
-        } while (!pass.equals(password));
+        }
         System.out.println("Contraseña correcta!");
         System.out.println("\n=== Bienvenido al Sistema!! ===\n");
         firstMenu(zoo);
@@ -27,7 +27,7 @@ public class Sys {
     private void firstMenu(Zoo zoo){
         boolean flag = true;
         while (flag) {
-            System.out.println("\t== Que desea realizar: ==");
+            System.out.println("\n\t== Que desea realizar: ==");
             System.out.println("1. Registrar");
             System.out.println("2. Revisar");
             System.out.println("3. Dirigir");
@@ -46,9 +46,10 @@ public class Sys {
                     directions(zoo);
                     break;
                 case 4:
-                    modify(zoo);
+                    edit(zoo);
                     break;
                 case 5:
+                    System.out.println("\nGRACIAS POR UTILIZAR EL SISTEMA!\n");
                     flag = false;
                     break;
                 default:
@@ -64,7 +65,7 @@ public class Sys {
         System.out.println("\n\tHA SELECCIONADO REGISTRAR\n");
 
         while(flag) {
-            System.out.println("\t== Que desea registrar: ==");
+            System.out.println("\t\n== Que desea registrar: ==");
             System.out.println("1. Nuevo Empleado");
             System.out.println("2. Nuevo Animal");
             System.out.println("3. Nuevo Cliente");
@@ -101,7 +102,7 @@ public class Sys {
 
         System.out.println("\n\tHA SELECCIONADO REVISAR LOS DATOS DEL ZOO\n");
         while (flag){
-            System.out.println("\t== Que desea consultar: ==");
+            System.out.println("\t\n== Que desea consultar: ==");
             System.out.println("1. Empleados");
             System.out.println("2. Visitantes");
             System.out.println("3. Animales");
@@ -139,24 +140,78 @@ public class Sys {
 
     private void directions(Zoo zoo){
         System.out.println("\n\tHA SELECCIONADO DIRIGIR A LOS EMPLEADOS\n");
-        System.out.println("1. Crear Orden de mantenimiento");
-        System.out.println("2. Crear Orden de veterinaria");
-        System.out.println("3. Volver al menu");
+        zoo.orderMaintenance();
+    }
 
-        int opt = sc.nextInt();
+    private void edit(Zoo zoo){
+        boolean flag = true;
+        System.out.println("\n\tHA SELECCIONADO MODIFICAR EL SISTEMA\n");
 
-        switch (opt){
-            case 1:
-                zoo.orderMaintenance();
-                break;
-            case 2:
-                zoo.orderVeterinary();
-                break;
+        while (flag) {
+            System.out.println("\nDesea eliminar o modificar algo del sistema: ");
+            System.out.println("1. Modificar");
+            System.out.println("2. Eliminar");
+            System.out.println("3. Volver al menu");
+
+            int opt = sc.nextInt();
+
+            switch (opt) {
+                case 1:
+                    modify(zoo);
+                    break;
+                case 2:
+                    delete(zoo);
+                    break;
+                case 3:
+                    flag = false;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
-    private void modify(Zoo zoo){
+    private void modify(Zoo zoo) {
+        boolean flag = true;
 
+        while (flag) {
+            System.out.println("\nQue desea modificar: ");
+            System.out.println("1. Cliente");
+            System.out.println("2. Empleado");
+            System.out.println("3. Animal");
+            System.out.println("4. Volver");
+
+            int opt = sc.nextInt();
+
+            switch (opt) {
+                case 1 -> zoo.modifyClient();
+                case 2 -> zoo.modifyEmployee();
+                case 3 -> zoo.modifyAnimal();
+                case 4 -> flag = false;
+                default -> System.out.println("Opcion ingresada incorrecta");
+            }
+        }
     }
 
+    private void delete(Zoo zoo){
+        boolean flag = true;
+
+        while (flag) {
+            System.out.println("\nQue desea eliminar: ");
+            System.out.println("1. Cliente");
+            System.out.println("2. Empleado");
+            System.out.println("3. Animal");
+            System.out.println("4. Volver");
+
+            int opt = sc.nextInt();
+
+            switch (opt) {
+                case 1 -> zoo.deleteClient();
+                case 2 -> zoo.deleteEmployee();
+                case 3 -> zoo.deleteAnimal();
+                case 4 -> flag = false;
+                default -> System.out.println("Opcion ingresada incorrecta");
+            }
+        }
+    }
 }

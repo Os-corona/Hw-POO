@@ -1,6 +1,9 @@
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+
 public class Employee {
+     private static Scanner sc = new Scanner(System.in);
     private static int cont = 1;
     private String ID;
     private String name;
@@ -27,6 +30,7 @@ public class Employee {
         this.hours = hours;
         this.role = role;
         this.age = age;
+        cont++;
     }
 
     public int getAge() {
@@ -71,5 +75,45 @@ public class Employee {
 
     public String getID() {
         return ID;
+    }
+
+    public void setName() {
+        System.out.println("Ingrese el nombre de la persona: ");
+        String name = sc.nextLine();
+        this.name = name;
+    }
+
+    public void setLastName() {
+        System.out.println("Ingrese el apellido de la persona: ");
+        String name = sc.nextLine();
+        this.lastName = name;
+    }
+
+    public void setSalary() {
+        System.out.println("Ingrese el nuevo salario del empleado: ");
+        double salary = sc.nextDouble();
+        this.salary = salary;
+    }
+
+    public void setHours() {
+        System.out.println("Ingrese el horario en el que el empleado trabajara (XX:XX - XX:XX)");
+        String hours = sc.nextLine();
+        this.hours = hours;
+    }
+
+    public void setRole() {
+        String availableRoles = "administracionguiamantenimientoveterinario";
+
+        System.out.println("Que rol desempeñara el empleado (Administracion, Guia, Mantenimiento, Veterinario)");
+        String role = sc.nextLine();
+
+        while (!availableRoles.contains(role.toLowerCase())) {
+
+            System.out.println("Rol no reconocido por el sistema");
+            System.out.println("Que rol desempeñara el empleado (Administracion, Guia, Mantenimiento, Veterinario)");
+            role = sc.nextLine();
+        }
+
+        this.role = role;
     }
 }

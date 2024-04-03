@@ -1,19 +1,22 @@
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Animal {
+    private static Scanner sc = new Scanner(System.in);
     private static int cont = 1;
     private String ID;
     private String animalType;
     private String birthday;
     private String dayOfArrival;
     private double weight;
-    private String[] diseases = new String[10];
+    private ArrayList<String> diseases = new ArrayList<>();
     private int feedingSchedule;
     private String foodType;
     private boolean isVaccinated;
 
-    public Animal(String animalType, String birthday, double weight, String[] diseases, int feedingSchedule, String foodType, boolean isVaccinated) {
+    public Animal(String animalType, String birthday, double weight, ArrayList<String> diseases, int feedingSchedule, String foodType, boolean isVaccinated) {
         this.animalType = animalType;
         this.ID = String.format("%03d", cont);
         this.birthday = birthday;
@@ -23,13 +26,16 @@ public class Animal {
         this.foodType = foodType;
         this.isVaccinated = isVaccinated;
         this.dayOfArrival = LocalDate.now().toString();
+        cont++;
     }
 
     public void printDiseases(Animal animal){
-        System.out.println("Lista de enfermedades: ");
-        for (int i = 0; i < animal.diseases.length; i++) {
-            System.out.print("\t"+animal.diseases[i]+" ");
+        System.out.printf("\tLista de enfermedades de %s %s: ",
+                animal.animalType,animal.getID());
+        for (String disease : diseases) {
+            System.out.print(disease + " ");
         }
+        System.out.println();
     }
 
     public String getAnimalType() {
@@ -48,7 +54,7 @@ public class Animal {
         return weight;
     }
 
-    public String[] getDiseases() {
+    public ArrayList<String> getDiseases() {
         return diseases;
     }
 
@@ -67,4 +73,27 @@ public class Animal {
     public String getID() {
         return ID;
     }
+
+    public void setWeight() {
+        System.out.println("Ingrese el peso del animal: ");
+        double weight = sc.nextDouble();
+        this.weight = weight;
+    }
+
+    public void setFeedingSchedule() {
+        System.out.println("Cada cuantas horas se alimentara al animal: ");
+        int feedingSchedule = sc.nextInt();
+        this.feedingSchedule = feedingSchedule;
+    }
+
+    public void setVaccinated() {
+        if (!this.isVaccinated){
+            this.isVaccinated = true;
+            System.out.println("El animal ha sido vacunado!");
+        } else {
+            System.out.println("El animal ya estaba vacunado!");
+        }
+    }
 }
+
+
