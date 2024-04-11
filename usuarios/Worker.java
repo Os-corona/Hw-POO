@@ -1,6 +1,6 @@
 package usuarios;
 import java.time.LocalDate;
-import usuarios.User;
+
 import usuarios.Utils.Rol;
 
 public class Worker extends User {
