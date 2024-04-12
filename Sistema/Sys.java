@@ -1,20 +1,72 @@
 package Sistema;
 
 import java.util.*;
+import usuarios.Utils.Rol;
+import usuarios.User;
 
 public class Sys {
     static Scanner sc = new Scanner(System.in);
 
-    public static void sys(){
-        System.out.println("Bienvenido!");
-        System.out.println("Ingrese su usuario: ");
-        String username = sc.nextLine();
-        
-        System.out.println("Ingrese su contraseña: ");
-        String password = sc.nextLine();
+    public static void sys(Library library){
+        System.out.println("\nBienvenido!");
+        boolean flag = true;
+        while (flag) {
+            System.out.println("\nDesea iniciar sesion o registrarse: ");
+            System.out.println("1. Iniciar Sesion");
+            System.out.println("2. Registrarse");
+            System.out.println("3. Cerrar programa");
+
+            int opt = sc.nextInt();
+
+            switch (opt) {
+                case 1 -> Sys.logIn(library);
+                case 2 -> Sys.register(library);
+                case 3 -> flag = false;
+                default -> System.out.println("\nOpcion incorrecta");
+            }
+        }
     }
 
-    private void clientMenu(){
+    private static void logIn(Library library){
+        boolean flag = true;
+        User logInUser = new User(null, null, null, null, null, null);
+        do {
+            System.out.println("Ingrese su usuario: ");
+            String username = sc.next();
+            
+            System.out.println("Ingrese su contraseña: ");
+            String password = sc.next();
+
+            for (User user : library.getUsers()){
+                if (user.getUser().equals(username)) {
+                    int index = library.getUsers().indexOf(user);
+                    if (library.getUsers().get(index).getPassword().equals(password)){
+                        logInUser = library.getUsers().get(index);
+                        flag = false;
+                        break;
+                    }
+                    break;
+                } else {
+                    flag = true;
+                }
+            }
+            if (flag) {
+                System.out.println("\nUsuario o contrasena incorrectas, intente de nuevo!\n");
+            }
+        } while (flag);
+
+        switch (logInUser.getRol()) {
+            case CLIENTE -> Sys.clientMenu(library);
+            case TRABAJADOR -> Sys.workerMenu(library);
+            case GERENTE -> Sys.managerMenu(library);        
+        }
+    }
+
+    private static void register(Library library){
+
+    }
+
+    private static void clientMenu(Library library){
         boolean flag = true;
         while (flag) {
             System.out.println("Bienvenido al menu de Cliente que desea realizar: ");
@@ -26,16 +78,16 @@ public class Sys {
             int opt = sc.nextInt();
 
             switch (opt) {
-                case 1 -> 
-                case 2 ->
-                case 3 ->
+                case 1 -> flag = false;
+                case 2 ->flag = false;
+                case 3 ->flag = false;
                 case 4 -> flag = false;
                 default -> System.out.println("ERROR");
             }
         }
     }
 
-    private void workerMenu(){
+    private static void workerMenu(Library library){
         boolean flag = true;
         while (flag) {
             System.out.println("Bienvenido al menu de Trabajador que desea realizar: ");
@@ -50,19 +102,19 @@ public class Sys {
             int opt = sc.nextInt();
 
             switch (opt) {
-                case 1 -> 
-                case 2 ->
-                case 3 ->
-                case 4 ->
-                case 5 -> 
-                case 6 ->
+                case 1 -> flag = false;
+                case 2 ->flag = false;
+                case 3 ->flag = false;
+                case 4 ->flag = false;
+                case 5 -> flag = false;
+                case 6 ->flag = false;
                 case 7 -> flag = false;
                 default -> System.out.println("ERROR");
             }
         }        
     }
 
-    private void managerMenu(){
+    private static void managerMenu(Library library){
         boolean flag = true;
         while (flag) {
             System.out.println("Bienvenido al menu de Trabajador que desea realizar: ");
@@ -78,13 +130,13 @@ public class Sys {
             int opt = sc.nextInt();
 
             switch (opt) {
-                case 1 -> 
-                case 2 ->
-                case 3 ->
-                case 4 ->
-                case 5 -> 
-                case 6 ->
-                case 7 -> 
+                case 1 -> flag = false;
+                case 2 ->flag = false;
+                case 3 ->flag = false;
+                case 4 ->flag = false;
+                case 5 -> flag = false;
+                case 6 ->flag = false;
+                case 7 -> flag = false;
                 case 8 -> flag = false;
                 default -> System.out.println("ERROR");
             }

@@ -1,6 +1,5 @@
 package usuarios;
 import usuarios.Utils.Rol;
-import java.time.LocalDate;
 
 public class User {
     private static int nextID = 1;
@@ -25,6 +24,18 @@ public class User {
     @Override
     public String toString(){
         return String.format("**ID: %d\t**Nombre completo: %s %s\t**Rol: %s", id, nombre, apellido, rol);
+    }
+
+    public String getUser(){
+        return this.username;
+    }
+
+    public String getPassword(){
+        return this.password;
+    }
+
+    public Rol getRol(){
+        return this.rol;
     }
 
 }

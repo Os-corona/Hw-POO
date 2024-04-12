@@ -1,9 +1,9 @@
 
 // TAREA: Hacer clases Trabajador y Gerente
 import Sistema.Library;
+import Sistema.Sys;
 import usuarios.Client;
 import usuarios.Manager;
-import usuarios.Utils.Rol;
 import usuarios.Worker;
 
 public class Main {
@@ -24,5 +24,7 @@ public class Main {
         System.out.println(trabajador.getFechaDeRegistro().toString());
         System.out.println(trabajador.toString());
         library.getUsers().add(trabajador);
+
+        Sys.sys(library);
     }
 }
