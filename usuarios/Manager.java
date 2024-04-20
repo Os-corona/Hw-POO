@@ -4,13 +4,13 @@ import usuarios.User;
 import usuarios.Utils.Rol;
 
 public class Manager extends User {
-    private double salary;
+    private String area;
     private LocalDate RegistrationDate;
 
-    public Manager(String nombre, String apellido, double salary, String birthday, String password, String username) {
+    public Manager(String nombre, String apellido, String area, String birthday, String password, String username) {
         super(nombre, apellido, Rol.GERENTE, birthday, password, username);
         this.RegistrationDate = LocalDate.now();
-        this.salary = salary;
+        this.area = area;
     }
 
     public LocalDate getFechaDeRegistro() {
@@ -19,8 +19,8 @@ public class Manager extends User {
 
     @Override
     public String toString(){
-        return String.format("**%s, Fecha de Registro %s** Salario %f",
-         super.toString(), RegistrationDate.toString(), this.salary);
+        return String.format("**%s, Fecha de Registro %s** Area: %s",
+         super.toString(), RegistrationDate.toString(), this.area);
     }
 
 }

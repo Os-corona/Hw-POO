@@ -2,6 +2,7 @@ package Sistema;
 
 import java.util.*;
 import usuarios.Utils.Rol;
+import utils.LogInUser;
 import usuarios.User;
 
 public class Sys {
@@ -37,25 +38,24 @@ public class Sys {
             System.out.println("Ingrese su contraseña: ");
             String password = sc.next();
 
-            for (User user : library.getUsers()){
-                if (user.getUser().equals(username)) {
-                    int index = library.getUsers().indexOf(user);
-                    if (library.getUsers().get(index).getPassword().equals(password)){
-                        logInUser = library.getUsers().get(index);
-                        flag = false;
-                        break;
+            for (ArrayList<User> usuarios : library.getUsers().values()) {
+                for (User usuarioABuscar : usuarios) {
+                    if(usuarioABuscar.getUser().equals(username)){
+                        logInUser = usuarioABuscar;
+                        if(logInUser.getPassword().equals(password)){
+                            flag = false;
+                        }
                     }
-                    break;
-                } else {
-                    flag = true;
                 }
             }
             if (flag) {
                 System.out.println("\nUsuario o contrasena incorrectas, intente de nuevo!\n");
             }
         } while (flag);
+        LogInUser user = LogInUser.getInstancia();
+        user.setUsuario(logInUser);
 
-        switch (logInUser.getRol()) {
+        switch (user.getUsuarioActual().getRol()) {
             case CLIENTE -> Sys.clientMenu(library);
             case TRABAJADOR -> Sys.workerMenu(library);
             case GERENTE -> Sys.managerMenu(library);        
@@ -63,7 +63,18 @@ public class Sys {
     }
 
     private static void register(Library library){
+        System.out.println("Ingrese el tipo de cuenta a crear: ");
+        System.out.println("1. Cliente");
+        System.out.println("2. Trabajador");
+        System.out.println("3. Manager");
 
+        int opt = sc.nextInt();
+
+        switch (opt) {
+            case 1 -> library.registerClient();
+            case 2 -> library.registerWorker();
+            case 3 -> library.registerManager();
+        }
     }
 
     private static void clientMenu(Library library){
@@ -103,8 +114,8 @@ public class Sys {
 
             switch (opt) {
                 case 1 -> flag = false;
-                case 2 ->flag = false;
-                case 3 ->flag = false;
+                case 2 -> library.printClients();
+                case 3 -> library.printWorkers();
                 case 4 ->flag = false;
                 case 5 -> flag = false;
                 case 6 ->flag = false;
@@ -131,8 +142,8 @@ public class Sys {
 
             switch (opt) {
                 case 1 -> flag = false;
-                case 2 ->flag = false;
-                case 3 ->flag = false;
+                case 2 -> library.printClients();
+                case 3 -> library.printWorkers();
                 case 4 ->flag = false;
                 case 5 -> flag = false;
                 case 6 ->flag = false;

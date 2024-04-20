@@ -5,10 +5,12 @@ import usuarios.Utils.Rol;
 
 public class Worker extends User {
     private LocalDate RegistrationDate;
+    private double salary;
 
-    public Worker(String nombre, String apellido, String birthday, String password, String username) {
+    public Worker(String nombre, String apellido, String birthday, String password, String username, double salary) {
         super(nombre, apellido, Rol.TRABAJADOR, birthday, password, username);
         this.RegistrationDate = LocalDate.now();
+        this.salary = salary;
     }
 
     public LocalDate getFechaDeRegistro() {
