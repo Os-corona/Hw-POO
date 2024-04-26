@@ -1,6 +1,6 @@
 public interface Shape {
     
-    public abstract double perimeter();
+    public double perimeter();
 
-    public abstract double area();
+    public double area();
 }
