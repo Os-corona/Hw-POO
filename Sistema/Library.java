@@ -10,10 +10,15 @@ import Sistema.utils.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+
+import Libros.Book;
+import Libros.utils.Genero;
+
 import java.util.Arrays;
 
 public class Library{
     private HashMap<Rol , ArrayList<User>> users = new HashMap<>();
+    private HashMap<Genero, ArrayList<Book>> books = new HashMap<>();
     private static Scanner sc = new Scanner(System.in);
 
     public Library(){
@@ -27,6 +32,10 @@ public class Library{
 
     public HashMap<Rol , ArrayList<User>> getUsers(){
         return this.users;
+    }
+
+    public HashMap<Genero, ArrayList<Book>> getBooks(){
+        return books;
     }
 
     public void registerClient(){
@@ -63,6 +72,10 @@ public class Library{
 
     public void modifyManager(){
         Manager.modifyManager(users);
+    }
+
+    public void registerBook(){
+        Book.registerBook();
     }
 
 }
