@@ -1,0 +1,4 @@
+Los JSON (JavaScript Object Notation) son un formato ligero de intercambio de datos que es fácilmente legible 
+para los humanos y fácilmente parseable por las máquinas. Consisten en pares clave-valor organizados en estructuras de datos anidadas, 
+como objetos y arrays. Son comúnmente utilizados para transmitir datos entre un servidor y un cliente en aplicaciones web y móviles, 
+así como en la configuración de APIs y en la configuración de muchas aplicaciones.

@@ -1,0 +1,38 @@
+[
+    {
+        "name" : "Oscar",
+        "age" : 18,
+        "birthday" : "28/09/2005",
+        "pets" : [
+            {
+                "name" : "bolita",
+                "age" : 2,
+                "type" : "gato"
+            },
+            {
+                "name" : "coco",
+                "age" : 4,
+                "type" : "perro"
+            }
+        ],
+        "isMale" : true
+    },
+    {
+        "name" : "Samuel",
+        "age" : 18,
+        "birthday" : "26/10/2005",
+        "pets" : [
+            {
+                "name" : "canela",
+                "age" : 6,
+                "type" : "perro"
+            },
+            {
+                "name" : "verdoso",
+                "age" : 1,
+                "type" : "perico"
+            }
+        ],
+        "isMale" : true
+    }
+]
