@@ -1,4 +1,5 @@
 package usuarios;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 import usuarios.Utils.Rol;
@@ -10,11 +11,11 @@ public class User {
     private String nombre;
     private String apellido;
     private Rol rol;
-    private String birthday;
+    private LocalDate birthday;
     private String password;
     private String username;
 
-    public User(String nombre, String apellido, Rol rol, String birthday, String password, String username) {
+    public User(String nombre, String apellido, Rol rol, LocalDate birthday, String password, String username) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.rol = rol;

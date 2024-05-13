@@ -1,9 +1,9 @@
 package usuarios;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 
 import Sistema.utils.*;
-import usuarios.Utils.Rol;
 import usuarios.Utils.*;
 
 public class Worker extends User {
@@ -11,7 +11,7 @@ public class Worker extends User {
     private LocalDate RegistrationDate;
     private double salary;
 
-    public Worker(String nombre, String apellido, String birthday, String password, String username, double salary) {
+    public Worker(String nombre, String apellido, LocalDate birthday, String password, String username, double salary) {
         super(nombre, apellido, Rol.TRABAJADOR, birthday, password, username);
         this.RegistrationDate = LocalDate.now();
         this.salary = salary;
@@ -34,7 +34,7 @@ public class Worker extends User {
         ArrayList<String> commonData = CommonData.commonData(users);
         String name = commonData.get(0);
         String lastName = commonData.get(1);
-        String birthday = commonData.get(2);
+        LocalDate birthday = LocalDate.parse(commonData.get(2));
         String username = commonData.get(3);
         String password = commonData.get(4);
 
@@ -108,5 +108,9 @@ public class Worker extends User {
                 default -> System.out.println("Opcion incorrecta, intente de nuevo");
             }    
         }
+    }
+
+    public static void checarSalida(){
+        System.out.println("Trabajador salio a las: " + LocalDateTime.now());
     }
 }

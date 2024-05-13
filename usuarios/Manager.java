@@ -1,5 +1,7 @@
 package usuarios;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import usuarios.User;
 import java.util.*;
 import Sistema.utils.*;
@@ -10,7 +12,7 @@ public class Manager extends User {
     private String area;
     private LocalDate RegistrationDate;
 
-    public Manager(String nombre, String apellido, String area, String birthday, String password, String username) {
+    public Manager(String nombre, String apellido, String area, LocalDate birthday, String password, String username) {
         super(nombre, apellido, Rol.GERENTE, birthday, password, username);
         this.RegistrationDate = LocalDate.now();
         this.area = area;
@@ -30,7 +32,7 @@ public class Manager extends User {
         ArrayList<String> commonData = CommonData.commonData(users);
         String name = commonData.get(0);
         String lastName = commonData.get(1);
-        String birthday = commonData.get(2);
+        LocalDate birthday = LocalDate.parse(commonData.get(2));
         String username = commonData.get(3);
         String password = commonData.get(4);
 
@@ -103,6 +105,10 @@ public class Manager extends User {
                 default -> System.out.println("Opcion incorrecta, intente de nuevo");
             }    
         }
+    }
+
+    public static void checarSalida(){
+        System.out.println("Gerente salio a las: " + LocalDateTime.now());
     }
 }
 

@@ -12,7 +12,7 @@ public class Client extends User {
     private static Scanner sc = new Scanner(System.in);
     private LocalDate fechaDeRegistro;
 
-    public Client(String nombre, String apellido, String birthday, String password, String username) {
+    public Client(String nombre, String apellido, LocalDate birthday, String password, String username) {
         super(nombre, apellido, Rol.CLIENTE, birthday, password, username);
         this.fechaDeRegistro = LocalDate.now();
     }
@@ -30,7 +30,7 @@ public class Client extends User {
         ArrayList<String> commonData = CommonData.commonData(users);
         String name = commonData.get(0);
         String lastName = commonData.get(1);
-        String birthday = commonData.get(2);
+        LocalDate birthday = LocalDate.parse(commonData.get(2));
         String username = commonData.get(3);
         String password = commonData.get(4);
         Client client = new Client(name, lastName, birthday, password, username);
