@@ -9,6 +9,8 @@ public class Sys {
     static Scanner sc = new Scanner(System.in);
 
     public static void sys(Library library){
+        Sistema.json.BookSerializer.readFromJSON(library);
+        Sistema.json.UserSerializer.readFromJSON(library);
         System.out.println("\nBienvenido!");
         boolean flag = true;
         while (flag) {
@@ -22,7 +24,11 @@ public class Sys {
             switch (opt) {
                 case 1 -> Sys.logIn(library);
                 case 2 -> Sys.register(library);
-                case 3 -> flag = false;
+                case 3 -> {
+                    flag = false;
+                    Sistema.json.BookSerializer.writeToJSON(library);
+                    Sistema.json.UserSerializer.writeToJSON(library);
+                }
                 default -> System.out.println("\nOpcion incorrecta");
             }
         }

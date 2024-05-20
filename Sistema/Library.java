@@ -75,7 +75,7 @@ public class Library{
     }
 
     public void registerBook(){
-        Book.registerBook();
+        Book.registerBook(books);
     }
 
 }
